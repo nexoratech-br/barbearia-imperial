@@ -1,0 +1,57 @@
+<nav class="absolute top-0 left-0 w-full z-20">
+	<div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+		<a href="#" class="text-white font-bold text-lg">
+			IMPERIAL
+		</a>
+
+		<div class="hidden md:flex items-center gap-8 text-sm">
+			<a href="#servicos" class="text-gray-200 hover:text-yellow-500 transition">
+				Serviços
+			</a>
+
+			<a href="#sobre" class="text-gray-200 hover:text-yellow-500 transition">
+				Sobre
+			</a>
+
+			<a href="#galeria" class="text-gray-200 hover:text-yellow-500 transition">
+				Galeria
+			</a>
+
+			<a href="#contato" class="text-gray-200 hover:text-yellow-500 transition">
+				Contato
+			</a>
+		</div>
+
+		<button id="menu-btn" class="md:hidden text-white text-2xl cursor-pointer">
+			☰
+		</button>
+	</div>
+
+	<div id="mobile-menu" class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-sm bg-black/80">
+		<a href="#servicos" class="text-gray-200 hover:text-yellow-500 transition">
+			Serviços
+		</a>
+
+		<a href="#sobre" class="text-gray-200 hover:text-yellow-500 transition">
+			Sobre
+		</a>
+
+		<a href="#galeria" class="text-gray-200 hover:text-yellow-500 transition">
+			Galeria
+		</a>
+
+		<a href="#contato" class="text-gray-200 hover:text-yellow-500 transition">
+			Contato
+		</a>
+	</div>
+</nav>
+
+<script>
+	const menuBtn = document.getElementById("menu-btn");
+	const mobileMenu = document.getElementById("mobile-menu");
+
+	menuBtn?.addEventListener("click", () => {
+		mobileMenu?.classList.toggle("hidden");
+		mobileMenu?.classList.toggle("flex");
+	});
+</script>
