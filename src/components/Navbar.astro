@@ -1,6 +1,6 @@
-<nav class="absolute top-0 left-0 w-full z-20">
+<nav class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md">
 	<div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-		<a href="#" class="text-white font-bold text-lg">
+		<a href="#inicio" class="text-white font-bold text-lg">
 			IMPERIAL
 		</a>
 
@@ -22,12 +22,12 @@
 			</a>
 		</div>
 
-		<button id="menu-btn" class="md:hidden text-white text-2xl cursor-pointer">
+		<button id="menu-btn" class="md:hidden text-white text-2xl cursor-pointer" aria-label="Abrir menu">
 			☰
 		</button>
 	</div>
 
-	<div id="mobile-menu" class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-sm bg-black/80">
+	<div id="mobile-menu" class="hidden md:hidden flex-col gap-5 px-6 py-6 text-sm bg-black/95 border-t border-white/10">
 		<a href="#servicos" class="text-gray-200 hover:text-yellow-500 transition">
 			Serviços
 		</a>
@@ -49,9 +49,25 @@
 <script>
 	const menuBtn = document.getElementById("menu-btn");
 	const mobileMenu = document.getElementById("mobile-menu");
+	const menuLinks = mobileMenu?.querySelectorAll("a");
 
 	menuBtn?.addEventListener("click", () => {
 		mobileMenu?.classList.toggle("hidden");
 		mobileMenu?.classList.toggle("flex");
+
+		const menuAberto = !mobileMenu?.classList.contains("hidden");
+
+		menuBtn.textContent = menuAberto ? "✕" : "☰";
+	});
+
+	menuLinks?.forEach((link) => {
+		link.addEventListener("click", () => {
+			mobileMenu?.classList.add("hidden");
+			mobileMenu?.classList.remove("flex");
+
+			if (menuBtn) {
+				menuBtn.textContent = "☰";
+			}
+		});
 	});
 </script>
