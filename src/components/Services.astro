@@ -1,77 +1,15 @@
-<section id="servicos" class="scroll-mt-16 bg-neutral-950 text-white py-20">
-	<div class="max-w-6xl mx-auto px-6">
-		<div class="text-center">
-			<p class="text-yellow-500 font-semibold">
-				NOSSOS SERVIÇOS
-			</p>
-
-			<h2 class="text-3xl md:text-4xl font-bold mt-3">
-				Cuidado em cada detalhe.
-			</h2>
-
-			<p class="text-gray-400 mt-4 max-w-2xl mx-auto">
-				Serviços pensados para quem valoriza estilo, acabamento e atendimento de qualidade.
-			</p>
-		</div>
-
-        <div class="grid gap-6 mt-10 md:grid-cols-2 lg:grid-cols-4">
-
-	        <div class="border border-yellow-500/20 bg-neutral-900 p-6 hover:border-yellow-500/40 transition flex flex-col">
-		        <h3 class="text-xl font-bold text-yellow-500">
-			        Corte
-		        </h3>
-
-		        <p class="text-gray-400 mt-3">
-			        Corte moderno com acabamento preciso e atenção aos detalhes.
-		        </p>
-
-                <p class="text-white font-bold mt-auto pt-5">
-	                R$ 45
-                </p>
-
-	        </div>
-
-	        <div class="border border-yellow-500/20 bg-neutral-900 p-6 hover:border-yellow-500/40 transition flex flex-col">
-		        <h3 class="text-xl font-bold text-yellow-500">
-			        Barba
-		        </h3>
-
-		        <p class="text-gray-400 mt-3">
-			        Barba alinhada, desenhada e finalizada com cuidado.
-		        </p>
-
-                <p class="text-white font-bold mt-auto pt-5">
-	                R$ 35
-                </p>
-	        </div>
-
-	        <div class="border border-yellow-500/20 bg-neutral-900 p-6 hover:border-yellow-500/40 transition flex flex-col">
-		        <h3 class="text-xl font-bold text-yellow-500">
-			        Corte + Barba
-		        </h3>
-
-		        <p class="text-gray-400 mt-3">
-			        Combinação completa para renovar o visual de forma prática.
-		        </p>
-
-                <p class="text-white font-bold mt-auto pt-5">
-	                R$ 70
-                </p>
-	        </div>
-
-	        <div class="border border-yellow-500/20 bg-neutral-900 p-6 hover:border-yellow-500/40 transition flex flex-col">
-		        <h3 class="text-xl font-bold text-yellow-500">
-			        Acabamento
-		        </h3>
-
-		        <p class="text-gray-400 mt-3">
-			        Ajustes finais para manter o corte e a barba sempre alinhados.
-		        </p>
-
-                <p class="text-white font-bold mt-auto pt-5">
-	                R$ 25
-                </p>
-	        </div>
-        </div>
-	</div>
+---
+import Arrow from './Arrow.astro';
+const services = [
+  {name:'Corte', description:'Forma, proporção e acabamento. Um corte que respeita seu estilo.', price:'45'},
+  {name:'Barba', description:'Desenho definido e alinhamento para valorizar o seu rosto.', price:'35'},
+  {name:'Corte + Barba', description:'O cuidado completo. Cabelo e barba em perfeita sintonia.', price:'70'},
+  {name:'Acabamento', description:'Os ajustes que fazem a diferença e mantêm o visual em dia.', price:'25'},
+];
+---
+<section id="servicos" class="services section-pad">
+  <div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">02 — SERVIÇOS</p><h2>Precisão que<br/>faz <span class="serif-accent">diferença.</span></h2></div><p class="section-description">Do visual de sempre a uma nova versão de você. Escolha o seu cuidado.</p></div>
+    <div class="services-grid"><figure class="services-image" data-reveal><img src="/images/Gallery-image-2.webp" srcset="/images/Gallery-image-2-700.webp 700w, /images/Gallery-image-2.webp 1122w" sizes="(max-width: 599px) 100vw, 50vw" alt="Tesoura, navalha e instrumentos de barbearia sobre a bancada" width="1122" height="1402" loading="lazy" decoding="async"/><figcaption><span>O ESSENCIAL, BEM FEITO.</span><span>IMPERIAL / CUIDADO MASCULINO</span></figcaption></figure>
+    <div class="service-list" data-reveal>{services.map((service, i) => <a class="service-row" href="#contato" aria-label={service.name + ' — R$ ' + service.price + '. Agendar horário'}><span class="service-number">0{i + 1}</span><div class="service-info"><h3>{service.name}</h3><p>{service.description}</p></div><div class="service-price"><span>R$</span> {service.price}</div><Arrow /></a>)}<p class="service-note">Seu próximo visual começa com uma conversa.<a href="#contato">Vamos agendar <span aria-hidden="true">↗</span></a></p></div></div>
+  </div>
 </section>

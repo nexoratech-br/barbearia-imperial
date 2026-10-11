@@ -1,24 +1,16 @@
-<section id="inicio" class="min-h-screen text-white flex items-center justify-center bg-[url('/hero-barbearia.png')] bg-cover bg-center relative">
-	<div class="absolute inset-0 bg-black/55"></div>
-
-	<div class="text-center relative z-10 px-6 max-w-3xl">
-		<p class="text-yellow-500 font-semibold">
-			BARBEARIA IMPERIAL
-		</p>
-
-		<h1 class="text-4xl md:text-6xl font-bold mt-4 leading-tight">
-			Estilo, precisão e personalidade.
-		</h1>
-
-		<p class="text-gray-300 mt-4 text-base md:text-lg max-w-xl mx-auto">
-			Cortes modernos, barba bem feita e atendimento de qualidade.
-		</p>
-
-		<a
-			href="#contato"
-			class="inline-block bg-yellow-500 text-black font-bold px-6 py-3 mt-8 hover:bg-yellow-600 transition hover:-translate-y-0.5"
-		>
-			Agendar horário
-		</a>
-	</div>
+---
+import Arrow from './Arrow.astro';
+---
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="hero-visual"><img src="/images/hero-barbearia.webp" srcset="/images/hero-barbearia-700.webp 700w, /images/hero-barbearia.webp 1672w" sizes="(max-width: 899px) 100vw, 77vw" alt="Ambiente da Imperial com poltronas de couro e iluminação âmbar" width="1672" height="941" fetchpriority="high" decoding="async"/><div class="hero-shade"></div></div>
+  <div class="container hero-inner">
+    <div class="hero-copy"><p class="eyebrow"><span class="gold-line"></span> ESTILO É PRESENÇA.</p>
+      <h1 id="hero-title">Seu estilo.<br/>Sua marca.<br/><span>Imperial.</span></h1>
+      <p class="hero-description">Corte preciso. Barba alinhada. Um cuidado à altura da imagem que você quer transmitir.</p>
+      <div class="hero-actions"><a class="button button-gold" href="#contato">Agendar meu horário <Arrow /></a><a class="text-link" href="#servicos">Explorar serviços <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-note"><span class="small-cross" aria-hidden="true">✦</span><p>ATENÇÃO AOS DETALHES.<br/><span>Do primeiro atendimento ao último acabamento.</span></p></div>
+    </div>
+    <div class="hero-caption"><span>O SEU MOMENTO.<br/>O NOSSO CUIDADO.</span></div>
+  </div>
+  <div class="container hero-bottom"><a href="#sobre" class="scroll-cue"><span class="scroll-track" aria-hidden="true"></span> CONHEÇA A IMPERIAL</a><span class="hero-bottom-note">CORTE &nbsp; / &nbsp; BARBA &nbsp; / &nbsp; IDENTIDADE</span></div>
 </section>

@@ -2,46 +2,55 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
 import About from '../components/About.astro';
+import Services from '../components/Services.astro';
 import Gallery from '../components/Gallery.astro';
+import Team from '../components/Team.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
-
-
 ---
 
 <html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-
-		<link rel="icon" type="image/png" href="/barbearia-imperial-favicon.png" />
-
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-
-		<title>Barbearia Imperial | Cortes e Barba</title>
-
-		<meta
-			name="description"
-			content="Barbearia Imperial: cortes modernos, barba bem feita e atendimento de qualidade em um ambiente pensado nos detalhes."
-		/>
-
-		<meta
-			name="robots"
-			content="noindex, nofollow"
-		/>
-	</head>
-	<body>
-		<Navbar />
-		<Hero />
-		<Services />
-		<About />
-		<Gallery />
-		<Contact />
-		<Footer />
-		<WhatsAppFloat />
-		
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Barbearia Imperial | Seu estilo. Sua marca.</title>
+    <meta name="description" content="Corte preciso, barba alinhada e cuidado com a sua identidade. Conheça a Barbearia Imperial e agende seu horário." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="/barbearia-imperial-favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+    <Navbar />
+    <main id="conteudo">
+      <Hero />
+      <About />
+      <Services />
+      <Gallery />
+      <Team />
+      <Contact />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
+    <script>
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('[data-reveal]').forEach(element => observer.observe(element));
+        document.documentElement.classList.add('reveal-ready');
+      }
+    </script>
+  </body>
 </html>

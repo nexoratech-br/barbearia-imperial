@@ -1,73 +1,26 @@
-<nav class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md">
-	<div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-		<a href="#inicio" class="text-white font-bold text-lg">
-			IMPERIAL
-		</a>
-
-		<div class="hidden md:flex items-center gap-8 text-sm">
-			<a href="#servicos" class="text-gray-200 hover:text-yellow-500 transition">
-				Serviços
-			</a>
-
-			<a href="#sobre" class="text-gray-200 hover:text-yellow-500 transition">
-				Sobre
-			</a>
-
-			<a href="#galeria" class="text-gray-200 hover:text-yellow-500 transition">
-				Galeria
-			</a>
-
-			<a href="#contato" class="text-gray-200 hover:text-yellow-500 transition">
-				Contato
-			</a>
-		</div>
-
-		<button id="menu-btn" class="md:hidden text-white text-2xl cursor-pointer" aria-label="Abrir menu">
-			☰
-		</button>
-	</div>
-
-	<div id="mobile-menu" class="hidden md:hidden flex-col gap-5 px-6 py-6 text-sm bg-black/95 border-t border-white/10">
-		<a href="#servicos" class="text-gray-200 hover:text-yellow-500 transition">
-			Serviços
-		</a>
-
-		<a href="#sobre" class="text-gray-200 hover:text-yellow-500 transition">
-			Sobre
-		</a>
-
-		<a href="#galeria" class="text-gray-200 hover:text-yellow-500 transition">
-			Galeria
-		</a>
-
-		<a href="#contato" class="text-gray-200 hover:text-yellow-500 transition">
-			Contato
-		</a>
-	</div>
-</nav>
-
+---
+import Brand from './Brand.astro';
+import Arrow from './Arrow.astro';
+---
+<header class="site-header" id="site-header">
+  <nav class="container nav" aria-label="Navegação principal">
+    <a href="#inicio" aria-label="Barbearia Imperial — início"><Brand /></a>
+    <div class="nav-links"><a href="#sobre">A Imperial</a><a href="#servicos">Serviços</a><a href="#galeria">O ambiente</a><a href="#equipe">Nosso cuidado</a></div>
+    <a class="nav-book" href="#contato">Agendar horário <Arrow /></a>
+    <button class="menu-toggle" id="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <div id="mobile-menu" class="mobile-menu" hidden><a href="#sobre">A Imperial</a><a href="#servicos">Serviços</a><a href="#galeria">O ambiente</a><a href="#equipe">Nosso cuidado</a><a href="#contato">Agendar horário ↗</a></div>
+  </nav>
+</header>
 <script>
-	const menuBtn = document.getElementById("menu-btn");
-	const mobileMenu = document.getElementById("mobile-menu");
-	const menuLinks = mobileMenu?.querySelectorAll("a");
-
-	menuBtn?.addEventListener("click", () => {
-		mobileMenu?.classList.toggle("hidden");
-		mobileMenu?.classList.toggle("flex");
-
-		const menuAberto = !mobileMenu?.classList.contains("hidden");
-
-		menuBtn.textContent = menuAberto ? "✕" : "☰";
-	});
-
-	menuLinks?.forEach((link) => {
-		link.addEventListener("click", () => {
-			mobileMenu?.classList.add("hidden");
-			mobileMenu?.classList.remove("flex");
-
-			if (menuBtn) {
-				menuBtn.textContent = "☰";
-			}
-		});
-	});
+  const button = document.querySelector<HTMLButtonElement>('#menu-btn');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  function closeMenu() { if (!button || !menu) return; menu.hidden = true; button.setAttribute('aria-expanded', 'false'); button.setAttribute('aria-label', 'Abrir menu'); }
+  button?.addEventListener('click', () => { if (!menu) return; const open = button.getAttribute('aria-expanded') !== 'true'; menu.hidden = !open; button.setAttribute('aria-expanded', String(open)); button.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); });
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && button?.getAttribute('aria-expanded') === 'true') { closeMenu(); button.focus(); } });
+  document.addEventListener('click', event => { if (event.target instanceof Node && !document.querySelector('.nav')?.contains(event.target)) closeMenu(); });
+  const desktop = window.matchMedia('(min-width: 900px)'); desktop.addEventListener('change', closeMenu);
+  const header = document.querySelector('#site-header');
+  const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', updateHeader, { passive: true }); updateHeader();
 </script>
