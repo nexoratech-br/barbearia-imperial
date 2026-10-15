@@ -103,19 +103,13 @@ h2 {
   color:var(--gold)
 }
 
-.arrow {
-  width:22px;
-  height:22px;
-  flex-shrink:0;
-  transition:transform .25s
-}
 
 .button {
   min-height:58px;
   display:inline-flex;
   align-items:center;
-  justify-content:space-between;
-  gap:32px;
+  justify-content:center;
+  text-align:center;
   padding:18px 25px;
   font-size:14px;
   font-weight:800;
@@ -134,13 +128,9 @@ h2 {
   box-shadow:0 10px 35px #c9a66b19
 }
 
-.button:hover .arrow {
-  transform:translateX(4px)
-}
 
 .text-link {
   display:inline-flex;
-  gap:20px;
   align-items:center;
   padding-block:10px;
   font-size:14px;
@@ -153,10 +143,6 @@ h2 {
   color:var(--gold)
 }
 
-.text-link span {
-  font-size:20px;
-  color:var(--gold)
-}
 
 .skip-link {
   position:fixed;
@@ -257,7 +243,8 @@ h2 {
 .nav-book {
   display:flex;
   align-items:center;
-  gap:25px;
+  justify-content:center;
+  text-align:center;
   font-size:14px;
   font-weight:700;
   padding:12px 18px;
@@ -271,9 +258,6 @@ h2 {
   color:#111
 }
 
-.nav-book .arrow {
-  width:18px
-}
 
 .menu-toggle {
   display:none;
@@ -603,7 +587,7 @@ h1>span {
 
 .service-row {
   display:grid;
-  grid-template-columns:25px 1fr auto 22px;
+  grid-template-columns:25px 1fr auto;
   gap:18px;
   align-items:center;
   min-height:109px;
@@ -653,19 +637,12 @@ h1>span {
   line-height:1.6;
 }
 
-.service-row>.arrow {
-  color:var(--gold);
-  transform:rotate(-45deg)
-}
 
 .service-row:hover,.service-row:focus-visible {
   padding-inline:12px;
   background:#c9a66b0a
 }
 
-.service-row:hover .arrow {
-  transform:rotate(-45deg) translateX(3px)
-}
 
 .service-row:is(:hover,:focus-visible) h3 {
   color:var(--gold)
@@ -685,7 +662,6 @@ h1>span {
   color:var(--paper);
   font-weight:700;
   display:flex;
-  gap:18px;
   align-items:center
 }
 
@@ -1175,9 +1151,6 @@ h1>span {
     grid-template-columns:18px 1fr auto;
     gap:10px
   }
-  .service-row>.arrow {
-    display:none
-  }
   .service-info h3 {
     font-size:29px;
     line-height:1.2;
@@ -1403,14 +1376,10 @@ h1>span {
     line-height:1.6;
   }
   .service-row {
-    grid-template-columns:20px 1fr auto 18px;
+    grid-template-columns:20px 1fr auto;
     gap:12px;
     min-height:114px;
     padding-block:24px
-  }
-  .service-row>.arrow {
-    display:block;
-    width:18px
   }
   .service-info h3 {
     font-size:30px;
@@ -1559,9 +1528,6 @@ h1>span {
   .service-row {
     gap:9px;
     grid-template-columns:15px 1fr auto
-  }
-  .service-row>.arrow {
-    display:none
   }
   .service-info h3 {
     font-size:27px;
